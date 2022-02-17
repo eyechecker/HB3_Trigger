@@ -16,11 +16,10 @@ jobs:
           fetch-depth: 1
       - name: make dir set bin
         run: |
-          mkdir HB3_MAIN
           mkdir HB3_REPO
           move bin.7z .\HB3_MAIN\bin.7z
-          cd HB3_MAIN
           7z  x -p${{ secrets.ZIP_PASS }} bin.7z
+          ren HB3_MAIN_TEMP HB3_MAIN
       - name: debug dir
         run: |
           cd HB3_MAIN
