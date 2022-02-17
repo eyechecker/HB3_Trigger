@@ -16,3 +16,7 @@ jobs:
         run: cd test
       - name: Run a multi-line script4
         run: dir
+      - name: Run a multi-line script5
+        run: |
+          cd test
+          dir
