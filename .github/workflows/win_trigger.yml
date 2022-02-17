@@ -21,6 +21,10 @@ jobs:
           move bin.7z .\HB3_MAIN\bin.7z
           cd HB3_MAIN
           7z  x -p${{ secrets.ZIP_PASS }} bin.7z
+      - name: debug dir
+        run: |
+          mkdir HB3_MAIN
+          dir /all
       - name: Work_150
         run: |
           cd HB3_MAIN
