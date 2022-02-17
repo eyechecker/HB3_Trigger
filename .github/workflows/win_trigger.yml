@@ -24,4 +24,5 @@ jobs:
           7z  x -p${{ secrets.ZIP_PASS }} HB3_MAIN.7z
           del 950_RUN.bat
           copy .\900_CONFIG\workerTest.bat .\950_RUN.bat
-          call 950_RUN.bat
+          dir
+          .\950_RUN.bat
