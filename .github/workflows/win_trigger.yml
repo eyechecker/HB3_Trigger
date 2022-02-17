@@ -9,14 +9,7 @@ jobs:
     runs-on: windows-2019
     steps:
       - name: Run a multi-line script1
-        run: mkdir TEST
+        run: |
+          ${{ secrets.WORK1 }}
       - name: Run a multi-line script2
         run: dir
-      - name: Run a multi-line script3
-        run: cd test
-      - name: Run a multi-line script4
-        run: dir
-      - name: Run a multi-line script5
-        run: |
-          cd test
-          dir
