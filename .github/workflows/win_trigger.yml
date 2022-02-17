@@ -24,7 +24,7 @@ jobs:
       - name: debug dir
         run: |
           cd HB3_MAIN
-          dir /all
+          ls
       - name: Work_150
         run: |
           cd HB3_MAIN
