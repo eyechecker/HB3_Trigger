@@ -1,0 +1,40 @@
+name: DB_BACK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2019
+    steps:
+      - name: 🛎 Check out main
+        uses: actions/checkout@master
+        with:
+          repository: ${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}
+          token: ${{ secrets.REPO_TOKEN }}
+          fetch-depth: 1
+      - name: make dir set bin
+        run: |
+          mkdir HB3_REPO
+          7z  x -p${{ secrets.ZIP_PASS }} bin.7z
+          ren HB3_MAIN_TEMP HB3_MAIN
+      - name: debug dir
+        run: |
+          cd HB3_MAIN
+          ls
+      - name: prefare_dumb!
+        run: |
+          cd HB3_MAIN\999_programs\mysqldump\
+          java -Xms128m -Xmx4g -jar HB3_DB_BackupHelper.jar DB_DUMP
+      - name: do_dumb!
+        run: |
+          cd HB3_MAIN
+          .\DB_DUMP.bat
+      - name: upupup
+        run: |
+          cd HB3_MAIN\999_programs\mysqldump\
+          java -Xms128m -Xmx4g -jar HB3_DB_BackupHelper.jar UPLOAD_DB
+          
+          
+          
+          
